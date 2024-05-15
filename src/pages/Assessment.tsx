@@ -41,7 +41,7 @@ const Assesment = () => {
     setSelected(selected + 1);
   }
   return (
-    <div className="p-4">
+    <div className="content-grid py-2">
       <header className="flex flex-col">
         <NavLink
           to='/'
@@ -51,34 +51,23 @@ const Assesment = () => {
         </NavLink>
         {/* <h1 className="text-2xl font-bold">Evaluación de entrenamiento</h1> */}
       </header>
-      <section className="flex items-center justify-center m-0">
+      <section className="flex items-center justify-center min-h-0 m-0">
         <ol className="flex items-center w-full">
           {steps.map(({title}: Step, index) => 
-            <li key={`stepsheader-${index}${title}`} className={`flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800`}>
-              <span className={`flex items-center justify-center w-10 h-10 ${selected === index ? 'bg-primary' : (selected > index ? 'bg-primary-content' : 'bg-gray-100')} rounded-full lg:h-12 lg:w-12 shrink-0`}>
+            <li key={`stepsheader-${index}${title}`} className={`flex w-full items-center [&:not(:last-child)]:after:content-[''] after:w-full after:h-1 [&:not(:last-child)]:after:border-b [&:not(:last-child)]:after:border-base-400 [&:not(:last-child)]:after:border-4 [&:not(:last-child)]:after:inline-block`}>
+              <span className={`flex items-center justify-center w-10 h-10 ${selected === index ? 'bg-primary' : (selected > index ? 'bg-success-content' : 'bg-gray-100')} rounded-full lg:h-12 lg:w-12 shrink-0`}>
                 {selected > index
-                  ? <svg className="w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 text-primary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                  ? <svg className="w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 text-success" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                     </svg>
                   : index + 1}
               </span>
             </li>
           )}
-          <li className="flex items-center w-full">
-            <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 shrink-0">
-              7
-            </span>
-          </li>
         </ol>
-
-        <ul className="steps">
-          {steps.map(({title}: Step, index) => 
-            <li key={`stepsheader-${index}${title}`} className={`step ${selected === index ? 'step-primary' : ''}`}></li>
-          )}
-        </ul>
       </section>
       {steps.map(({title, description, options}: Step, index) => 
-        <section key={`steps-${index}${title}`} className={`grid grid-cols-1 gap-2 ${selected === index ? '' : 'hidden'} mb-0`}>
+        <section key={`steps-${index}${title}`} className={`grid grid-cols-1 gap-2 ${selected === index ? '' : 'hidden'} mb-0 min-h-0 py-0`}>
           <header>
             <h2 className="text-xl font-bold">{ title }</h2>
           </header>
@@ -139,7 +128,7 @@ const Assesment = () => {
           )}
         </div>
       </section>
-      <section className={`grid grid-cols-1 gap-2 ${selected === 6 ? '' : 'hidden'}`}>
+      <section className={`grid grid-cols-1 gap-4 ${selected === 6 ? '' : 'hidden'} p-0`}>
         <header>
           <h2 className="text-xl font-bold">Gracias por completar la evaluación</h2>
         </header>
@@ -149,8 +138,17 @@ const Assesment = () => {
           <div className="card-body [&>p]:text-white [&>h2]:text-white items-center text-center">
             <h2 className="card-title">Shoes!</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div className="card-actions justify-end">
+              
+            </div>
           </div>
         </div>
+        <NavLink
+          to='/'
+          className="btn btn-primary w-full"
+        >
+          Finalizar
+        </NavLink>
       </section>
     </div>
   )
