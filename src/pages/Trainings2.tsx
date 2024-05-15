@@ -4,9 +4,9 @@ const Trainings2 = () => {
   return (
     <Layout
       title=""
-      className="bg-[url('/ka5dM7Q-unsplash.jpg')] bg-cover bg-center"
+      className="min-h-screen bg-[url('/wXBK9JrM0iU-unsplash.webp')] bg-cover bg-center"
     >
-      <section>
+      <section className="grid grid-cols-autofit place-items-center">
         <div className="card max-w-96 glass">
           <div className="card-body">
             <h2 className="card-title">Life hack</h2>

@@ -17,7 +17,8 @@ const Header = () => {
   };
 
   return (
-    <header className="mx-auto px-6 p-2 max-w-7xl md:px-12">
+    // mx-auto px-6 p-2 max-w-7xl md:px-12 
+    <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 bg-base-100/75 px-6 p-2 md:px-12">
       <div className="navbar p-0">
         <div className="navbar-start">
           <div className="dropdown">

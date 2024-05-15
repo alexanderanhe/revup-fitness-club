@@ -1,10 +1,11 @@
-import { useState } from "react"
-import Layout from "../components/templates/Layout"
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 type Step = {
   title: string,
-  description: string,
-  options: string[]
+  description?: string,
+  options?: string[]
 }
 
 const steps: Step[] = [
@@ -27,6 +28,10 @@ const steps: Step[] = [
     title: "Pretendo entrenar con una frecuencia de:",
     description: "",
     options: ["1x a la semana", "2x a la semana", "3x a la semana o más"]
+  },{
+    title: "¿Cuál es tu pesoy altura actuales?",
+  },{
+    title: "¿Tienes alguna caracteristica física o de salud que debamos tener en cuenta?",
   }
 ]
 const Assesment = () => {
@@ -36,8 +41,36 @@ const Assesment = () => {
     setSelected(selected + 1);
   }
   return (
-    <Layout title="">
-      <section>
+    <div className="p-4">
+      <header className="flex flex-col">
+        <NavLink
+          to='/'
+          className='btn btn-ghost btn-circle'
+        >
+          <XMarkIcon className="size-8" />
+        </NavLink>
+        {/* <h1 className="text-2xl font-bold">Evaluación de entrenamiento</h1> */}
+      </header>
+      <section className="flex items-center justify-center m-0">
+        <ol className="flex items-center w-full">
+          {steps.map(({title}: Step, index) => 
+            <li key={`stepsheader-${index}${title}`} className={`flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800`}>
+              <span className={`flex items-center justify-center w-10 h-10 ${selected === index ? 'bg-primary' : (selected > index ? 'bg-primary-content' : 'bg-gray-100')} rounded-full lg:h-12 lg:w-12 shrink-0`}>
+                {selected > index
+                  ? <svg className="w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 text-primary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                    </svg>
+                  : index + 1}
+              </span>
+            </li>
+          )}
+          <li className="flex items-center w-full">
+            <span className="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 shrink-0">
+              7
+            </span>
+          </li>
+        </ol>
+
         <ul className="steps">
           {steps.map(({title}: Step, index) => 
             <li key={`stepsheader-${index}${title}`} className={`step ${selected === index ? 'step-primary' : ''}`}></li>
@@ -45,28 +78,27 @@ const Assesment = () => {
         </ul>
       </section>
       {steps.map(({title, description, options}: Step, index) => 
-        <section key={`steps-${index}${title}`} className={`grid grid-cols-1 gap-2 ${selected === index ? '' : 'hidden'}`}>
+        <section key={`steps-${index}${title}`} className={`grid grid-cols-1 gap-2 ${selected === index ? '' : 'hidden'} mb-0`}>
           <header>
             <h2 className="text-xl font-bold">{ title }</h2>
           </header>
           <p>{ description }</p>
-          <div className="grid grid-cols-1 gap-4">
-            {options.map((option, index) => 
-              <button
-                key={`option-${title}${index}`}
-                onClick={handleClick}
-                className="btn btn-ghost shadow rounded-box w-full justify-start text-left"
-              >
-                { option }
-              </button>
-            )}
-          </div>
+          { options && (
+            <div className="grid grid-cols-1 gap-4">
+              {options.map((option, index) => 
+                <button
+                  key={`option-${title}${index}`}
+                  onClick={handleClick}
+                  className="btn btn-ghost shadow rounded-box w-full justify-start text-left"
+                >
+                  { option }
+                </button>
+              )}
+            </div>
+          )}
         </section>
       )}
-      <section className={`grid grid-cols-1 gap-2 ${selected === 4 ? '' : 'hidden'}`}>
-        <header>
-          <h2 className="text-xl font-bold">¿Cuál es tu pesoy altura actuales?</h2>
-        </header>
+      <section className={`grid grid-cols-1 gap-2 ${selected === 4 ? '' : 'hidden'} mt-0`}>
         <div>
           <label className="form-control w-full max-w-xs">
             <div className="label">
@@ -94,10 +126,7 @@ const Assesment = () => {
           </button>
         </div>
       </section>
-      <section className={`grid grid-cols-1 gap-2 ${selected === 5 ? '' : 'hidden'}`}>
-        <header>
-          <h2 className="text-xl font-bold">¿Tienes alguna caracteristica física o de salud que debamos tener en cuenta?</h2>
-        </header>
+      <section className={`grid grid-cols-1 gap-2 ${selected === 5 ? '' : 'hidden'} mt-0`}>
         <div className="flex flex-wrap gap-4">
           {['DISCAPACIDAD', 'LESION', 'ENFERMEDAD', 'EMBARAZO', 'OTRAS', 'NO POSEO'].map((option) => 
             <button
@@ -123,7 +152,7 @@ const Assesment = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </div>
   )
 }
 

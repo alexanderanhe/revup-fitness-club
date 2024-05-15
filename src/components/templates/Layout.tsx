@@ -15,7 +15,9 @@ export default function Layout({ title, children, ...props }: Props) {
   return (
     <div {...props}>
       <Header />
-      <main className="mx-auto min-h-[80vh] p-5 max-w-7xl md:px-12">
+      <main className="content-grid mb-24"
+        // className="mx-auto min-h-[80vh] p-5 max-w-7xl md:px-12"
+      >
         { children }
       </main>
       <Footer />

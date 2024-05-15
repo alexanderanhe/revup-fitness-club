@@ -12,6 +12,9 @@ export default {
         "jersey10": ['"Jersey 10"', ...defaultTheme.fontFamily.sans],
         "synemono": ['"Syne Mono"', ...defaultTheme.fontFamily.mono],
       },
+      gridTemplateColumns: {
+        'autofit': 'repeat(auto-fit, minmax(300px, 1fr))',
+      },
     },
   },
   daisyui: {
