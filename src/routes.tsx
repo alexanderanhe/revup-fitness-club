@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Root, Home, Assessment, Trainings, ErrorPage } from './pages/';
+import { Root, Home, LogIn, Assessment, Trainings, Trainings2, ErrorPage } from './pages/';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,15 @@ const router = createBrowserRouter([
         path: "/trainings", 
         element: <Trainings />,
       },
+      {
+        path: "/trainings2", 
+        element: <Trainings2 />,
+      },
     ]
+  },
+  {
+    path: "/login", 
+    element: <LogIn />,
   },
 ]);
 export default router;

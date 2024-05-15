@@ -1,6 +1,8 @@
+import Layout from "../components/templates/Layout"
+
 const Trainings = () => {
   return (
-    <>
+    <Layout title="">
       <h1>Trainings</h1>
       <section className="grid grid-cols-1 gap-4">
         <article className="card max-w-96 bg-base-100 shadow-xl image-full">
@@ -39,7 +41,7 @@ const Trainings = () => {
           </div>
         </article>
       </section>
-    </>
+    </Layout>
   )
 }
 

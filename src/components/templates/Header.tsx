@@ -4,6 +4,7 @@ const menuNavLinks = [
   { name: 'Home', href: '/' },
   { name: 'Assessment', href: '/assessment' },
   { name: 'Trainings', href: '/trainings' },
+  { name: 'Trainings2', href: '/trainings2' },
 ];
 
 const Header = () => {
@@ -16,8 +17,8 @@ const Header = () => {
   };
 
   return (
-    <header className="mx-auto px-6 max-w-7xl md:px-12">
-      <div className="navbar bg-base-100 px-0 py-5">
+    <header className="mx-auto px-6 p-2 max-w-7xl md:px-12">
+      <div className="navbar p-0">
         <div className="navbar-start">
           <div className="dropdown">
             <button tabIndex={0} role="button" className="btn btn-neutral-content btn-circle">
@@ -25,7 +26,7 @@ const Header = () => {
                   <path d="M6.5,11A1.5,1.5,0,1,1,5,9.5,1.5,1.5,0,0,1,6.5,11ZM5,3.5A1.5,1.5,0,1,0,6.5,5,1.5,1.5,0,0,0,5,3.5ZM12.5,11A1.5,1.5,0,1,1,11,9.5,1.5,1.5,0,0,1,12.5,11ZM11,3.5A1.5,1.5,0,1,0,12.5,5,1.5,1.5,0,0,0,11,3.5Z"/>
               </svg>
             </button>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[20] p-2 shadow bg-base-100 rounded-box w-52">
               { menuNavLinks.map(({name, href}) => (
                 <li key={`navLink${href}`} onClick={handleClick}>
                   <NavLink
