@@ -4,7 +4,6 @@ const menuNavLinks = [
   { name: 'Home', href: '/' },
   { name: 'Assessment', href: '/assessment' },
   { name: 'Trainings', href: '/trainings' },
-  { name: 'Trainings2', href: '/trainings2' },
 ];
 
 const Header = () => {

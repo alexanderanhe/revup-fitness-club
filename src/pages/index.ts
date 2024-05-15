@@ -4,6 +4,5 @@ import Home from "./Home";
 import LogIn from "./LogIn";
 import Assessment from "./Assessment";
 import Trainings from "./Trainings";
-import Trainings2 from "./Trainings2";
 
-export { Root, Home, LogIn, Assessment, Trainings, Trainings2, ErrorPage }
+export { Root, Home, LogIn, Assessment, Trainings, ErrorPage }
