@@ -99,7 +99,7 @@ const Assesment = () => {
           <h2 className="text-xl font-bold">¿Tienes alguna caracteristica física o de salud que debamos tener en cuenta?</h2>
         </header>
         <div className="flex flex-wrap gap-4">
-          {['DISCAPACIDAD', 'LESION', 'ENFERMEDAD', 'EMBARAZO', 'OTRAS', 'NO POSEO'].map((option, index) => 
+          {['DISCAPACIDAD', 'LESION', 'ENFERMEDAD', 'EMBARAZO', 'OTRAS', 'NO POSEO'].map((option) => 
             <button
               key={`option-${option}`}
               onClick={handleClick}
