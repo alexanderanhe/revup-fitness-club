@@ -1,157 +1,89 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import Welcome from "../components/assessment/Welcome";
+import Quizz from "../components/assessment/Quizz";
 
-type Step = {
+export type Question = {
+  key: string,
   title: string,
+  shortTitle: string,
   description?: string,
   options?: string[]
+  inputs?: {
+    name: string,
+    title: string,
+    type: string,
+    placeholder: string
+  }[]
+  multiple?: string[]
 }
 
-const steps: Step[] = [
+const quizz: Question[] = [
   {
+    key: "goal",
     title: "Mi objectivo es:",
+    shortTitle: "Objetivo",
     description: "",
     options: ["Perder peso", "Mantenerme en forma", "Ganar masa muscular"]
   },
   {
+    key: "training",
+    shortTitle: "Historial de Entrenamiento",
     title: "Durante los ultimos 4 meses, yo:",
     description: "",
     options: ["No entrené", "Entrené 1x a la semana", "Entrené de 2x a 3x a la semana", "Entrené 4x a más a la semana"]
   },
   {
+    key: "gym",
+    shortTitle: "Conocimiento de Gimnasio",
     title: "Evaluando mi conocimiento sobre entrenamiento en el gimnasio",
     description: "",
     options: ["Es la primera vez que voy a un gimnasio", "He ido a un gimnasio pero no sé cómo entrenar", "He ido a un gimnasio y sé cómo entrenar", "Puedo entrenar de forma autónoma"]
   },
   {
+    key: "frequency",
+    shortTitle: "Frecuencia",
     title: "Pretendo entrenar con una frecuencia de:",
     description: "",
     options: ["1x a la semana", "2x a la semana", "3x a la semana o más"]
   },{
+    key: "weight",
+    shortTitle: "Peso y Altura",
     title: "¿Cuál es tu pesoy altura actuales?",
+    inputs: [
+      {
+        name: "weight",
+        title: "Peso (kg)",
+        type: "number",
+        placeholder: "00"
+      },
+      {
+        name: "height",
+        title: "Altura (cm)",
+        type: "number",
+        placeholder: "00"
+      }
+    ]
   },{
+    key: "health",
+    shortTitle: "Salud o física",
     title: "¿Tienes alguna caracteristica física o de salud que debamos tener en cuenta?",
+    multiple: ['DISCAPACIDAD', 'LESION', 'ENFERMEDAD', 'EMBARAZO', 'OTRAS', 'NO POSEO']
   }
 ]
-const Assesment = () => {
-  const [selected, setSelected] = useState(0);
+
+const Assessment = () => {
+  const [selected, setSelected] = useState<number>(-1);
+  const [form, setForm] = useState({});
 
   const handleClick = () => {
     setSelected(selected + 1);
   }
   return (
-    <div className="content-grid py-2">
-      <header className="flex flex-col">
-        <NavLink
-          to='/'
-          className='btn btn-ghost btn-circle'
-        >
-          <XMarkIcon className="size-8" />
-        </NavLink>
-        {/* <h1 className="text-2xl font-bold">Evaluación de entrenamiento</h1> */}
-      </header>
-      <section className="flex items-center justify-center min-h-0 m-0">
-        <ol className="flex items-center w-full">
-          {steps.map(({title}: Step, index) => 
-            <li key={`stepsheader-${index}${title}`} className={`flex w-full items-center [&:not(:last-child)]:after:content-[''] after:w-full after:h-1 [&:not(:last-child)]:after:border-b [&:not(:last-child)]:after:border-base-400 [&:not(:last-child)]:after:border-4 [&:not(:last-child)]:after:inline-block`}>
-              <span className={`flex items-center justify-center w-10 h-10 ${selected === index ? 'bg-primary' : (selected > index ? 'bg-success-content' : 'bg-gray-100')} rounded-full lg:h-12 lg:w-12 shrink-0`}>
-                {selected > index
-                  ? <svg className="w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 text-success" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                    </svg>
-                  : index + 1}
-              </span>
-            </li>
-          )}
-        </ol>
-      </section>
-      {steps.map(({title, description, options}: Step, index) => 
-        <section key={`steps-${index}${title}`} className={`grid grid-cols-1 gap-2 ${selected === index ? '' : 'hidden'} mb-0 min-h-0 py-0`}>
-          <header>
-            <h2 className="text-xl font-bold">{ title }</h2>
-          </header>
-          <p>{ description }</p>
-          { options && (
-            <div className="grid grid-cols-1 gap-4">
-              {options.map((option, index) => 
-                <button
-                  key={`option-${title}${index}`}
-                  onClick={handleClick}
-                  className="btn btn-ghost shadow rounded-box w-full justify-start text-left"
-                >
-                  { option }
-                </button>
-              )}
-            </div>
-          )}
-        </section>
-      )}
-      <section className={`grid grid-cols-1 gap-2 ${selected === 4 ? '' : 'hidden'} mt-0`}>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Peso actual (kg)</span>
-            </div>
-            <input type="text" placeholder="00" className="input input-bordered w-full max-w-xs" />
-            <div className="label">
-              <span className="label-text-alt">(optional)</span>
-            </div>
-          </label>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Altura (cm)</span>
-            </div>
-            <input type="text" placeholder="00" className="input input-bordered w-full max-w-xs" />
-            <div className="label">
-              <span className="label-text-alt">(optional)</span>
-            </div>
-          </label>
-          <button
-            onClick={handleClick}
-            className="btn btn-primary w-full"
-          >
-            Siguiente
-          </button>
-        </div>
-      </section>
-      <section className={`grid grid-cols-1 gap-2 ${selected === 5 ? '' : 'hidden'} mt-0`}>
-        <div className="flex flex-wrap gap-4">
-          {['DISCAPACIDAD', 'LESION', 'ENFERMEDAD', 'EMBARAZO', 'OTRAS', 'NO POSEO'].map((option) => 
-            <button
-              key={`option-${option}`}
-              onClick={handleClick}
-              className="btn shadow rounded"
-            >
-              { option }
-            </button>
-          )}
-        </div>
-      </section>
-      <section className={`grid grid-cols-1 gap-4 ${selected === 6 ? '' : 'hidden'} p-0`}>
-        <header>
-          <h2 className="text-xl font-bold">Gracias por completar la evaluación</h2>
-        </header>
-        <p>En base a tus respuestas, te recomendamos el siguiente programa de entrenamiento:</p>
-        <div className="card max-w-96 bg-base-100 shadow-xl image-full">
-          <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-          <div className="card-body [&>p]:text-white [&>h2]:text-white items-center text-center">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              
-            </div>
-          </div>
-        </div>
-        <NavLink
-          to='/'
-          className="btn btn-primary w-full"
-        >
-          Finalizar
-        </NavLink>
-      </section>
-    </div>
+    <>
+      {selected < 0 && <Welcome handleStart={handleClick} /> }
+      {selected >= 0 && <Quizz quizz={quizz} selected={selected} formState={[form, setForm]} setSelected={setSelected} /> }
+    </>
   )
 }
 
-export default Assesment
+export default Assessment
