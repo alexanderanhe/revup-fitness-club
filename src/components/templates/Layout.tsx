@@ -1,6 +1,5 @@
 import { ReactNode, useEffect } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
 
 type Props = {
   title: string,
@@ -20,7 +19,6 @@ export default function Layout({ title, children, ...props }: Props) {
       >
         { children }
       </main>
-      <Footer />
     </div>
   )
 }

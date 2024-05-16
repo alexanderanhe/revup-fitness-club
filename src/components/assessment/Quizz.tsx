@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { Question } from "../../pages/Assessment"
 import QuizzItem from "./QuizzItem"
 import Section from "./Section"
@@ -12,11 +13,12 @@ type QuizzProps = {
 
 const Quizz = ({ selected, quizz, formState, setSelected }: QuizzProps) => {
   const [ form ] = formState;
-
+  const navigate = useNavigate();
   const header = <Stepper steps={quizz} selected={selected} form={form} setSelected={setSelected} />;
 
   const handleSubmit = () => {
     console.log('submit', form);
+    navigate("/");
   }
   const handleChangeAnswers = () => {
     setSelected(0);
