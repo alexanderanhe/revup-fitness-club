@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Root, Home, LogIn, Profile, Assessment, OnDemand, Workout, ErrorPage, Calendar } from './pages/';
+import { Root, Home, LogIn, Profile, Assessment, OnDemand, Workout, ErrorPage, Calendar, Logs } from './pages/';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/on-demand", 
         element: <OnDemand />,
+      },
+      {
+        path: "/logs", 
+        element: <Logs />,
       },
       {
         path: "/profile", 

@@ -1,7 +1,7 @@
 const Stats = () => {
   return (
     <section>
-      <h3>Weekly stats</h3>
+      <h2>Weekly stats</h2>
       <div className="grid grid-cols-2 grid-rows-3 w-full gap-2">
         <div className="grid grid-rows-subgrid row-span-2 shadow-md bg-blue-200/60 text-black rounded-3xl place-items-center p-4">
           <div className="flex bg-white size-9 text-xl rounded-full items-center justify-center self-end">🔥</div>

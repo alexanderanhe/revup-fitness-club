@@ -10,12 +10,12 @@ export type MenuNavLinks = {
 }
 
 const menuNavLinks: MenuNavLinks[] = [
-  { name: 'Today', href: '/', current: ['nav', 'footer'], Icon: Squares2X2Icon },
   { name: 'Assessment', href: '/assessment', current: ['nav'] },
-  { name: 'On-demand', href: '/on-demand', current: ['footer'], Icon: FilmIcon },
   { name: 'Ejercicios', href: '/workout', current: ['nav'] },
-  { name: 'Logs', href: '/workout', current: ['nav', 'footer'], Icon: ClockIcon },
+  { name: 'On-demand', href: '/on-demand', current: ['footer'], Icon: FilmIcon },
   { name: 'Calendario', href: '/calendar', current: ['nav', 'footer'], Icon: CalendarDaysIcon },
+  { name: 'Hoy', href: '/', current: ['nav', 'footer'], Icon: Squares2X2Icon },
+  { name: 'Logs', href: '/logs', current: ['nav', 'footer'], Icon: ClockIcon },
   { name: 'Ajuste', href: '/profile', current: ['footer'], Icon: Cog6ToothIcon },
 ];
 
