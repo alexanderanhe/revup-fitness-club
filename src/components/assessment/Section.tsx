@@ -10,7 +10,7 @@ type SectionProps = {
 
 const Section = ({ title, header, buttons, children }: SectionProps) => {
   return (
-    <div className="content-grid h-screen py-2" style={{ gridTemplateRows: "auto auto 1fr auto" }}>
+    <div className="content-grid grid-rows-[auto_auto_1fr_auto] h-screen py-2">
       <div className="flex flex-col place-items-start">
         <NavLink
           to='/'

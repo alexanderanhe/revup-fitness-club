@@ -44,7 +44,7 @@
 }
 
 section {
-  @apply flex flex-col gap-2 min-h-60 justify-center;
+  @apply flex flex-col w-full gap-2 min-h-60 justify-center;
   padding-block-start: 1.5rem;
   padding-block-end: 1.5rem;
 }

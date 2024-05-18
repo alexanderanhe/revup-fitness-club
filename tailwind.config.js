@@ -16,6 +16,9 @@ export default {
         'autofit': 'repeat(auto-fit, minmax(300px, 1fr))',
       },
     },
+    backgroundImage: {
+      'workout': "url('/wXBK9JrM0iU-unsplash.webp')",
+    }
   },
   daisyui: {
     themes: ['light', 'dark', 'pastel', 'cmyk'],

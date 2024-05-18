@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Squares2X2Icon, FilmIcon, UserIcon } from "@heroicons/react/24/outline"
-import WorkoutIcon from "../../assets/WorkoutIcon";
+import { Squares2X2Icon, FilmIcon, ClockIcon, CalendarDaysIcon, Cog6ToothIcon, Bars3Icon } from "@heroicons/react/24/outline"
 import Footer from "./Footer";
 
 export type MenuNavLinks = {
@@ -13,9 +12,11 @@ export type MenuNavLinks = {
 const menuNavLinks: MenuNavLinks[] = [
   { name: 'Today', href: '/', current: ['nav', 'footer'], Icon: Squares2X2Icon },
   { name: 'Assessment', href: '/assessment', current: ['nav'] },
-  { name: 'Resources', href: '/resources', current: ['footer'], Icon: FilmIcon },
-  { name: 'Trainings', href: '/trainings', current: ['nav', 'footer'], Icon: WorkoutIcon },
-  { name: 'Profile', href: '/profile', current: ['footer'], Icon: UserIcon },
+  { name: 'On-demand', href: '/on-demand', current: ['footer'], Icon: FilmIcon },
+  { name: 'Ejercicios', href: '/workout', current: ['nav'] },
+  { name: 'Logs', href: '/workout', current: ['nav', 'footer'], Icon: ClockIcon },
+  { name: 'Calendario', href: '/calendar', current: ['nav', 'footer'], Icon: CalendarDaysIcon },
+  { name: 'Ajuste', href: '/profile', current: ['footer'], Icon: Cog6ToothIcon },
 ];
 
 const Header = () => {
@@ -29,14 +30,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 bg-base-100/75 px-6 p-2 md:px-12">
-        <div className="navbar p-0">
+      <header className="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 bg-base-100/75">
+        <nav className="navbar">
           <div className="navbar-start">
             <div className="dropdown">
-              <button tabIndex={0} role="button" className="btn btn-neutral-content btn-circle">
-                <svg className="size-8" fill="#777777" viewBox="0 0 16 16">
-                    <path d="M6.5,11A1.5,1.5,0,1,1,5,9.5,1.5,1.5,0,0,1,6.5,11ZM5,3.5A1.5,1.5,0,1,0,6.5,5,1.5,1.5,0,0,0,5,3.5ZM12.5,11A1.5,1.5,0,1,1,11,9.5,1.5,1.5,0,0,1,12.5,11ZM11,3.5A1.5,1.5,0,1,0,12.5,5,1.5,1.5,0,0,0,11,3.5Z"/>
-                </svg>
+              <button tabIndex={0} role="button" className="btn btn-base-100 btn-circle">
+                <Bars3Icon className="size-6" />
               </button>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[20] p-2 shadow bg-base-100 rounded-box w-52">
                 { menuNavLinks.filter(({current}: MenuNavLinks) => current.includes('nav'))
@@ -68,7 +67,7 @@ const Header = () => {
             </button> */}
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-12 mask mask-squircle">
+                <div className="w-10 mask mask-squircle">
                   <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
                 </div>
               </div>
@@ -84,7 +83,7 @@ const Header = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </nav>
       </header>
       <Footer menuNavLinks={menuNavLinks.filter(({current}: MenuNavLinks) => current.includes('footer'))} />
     </>

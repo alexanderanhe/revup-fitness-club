@@ -1,11 +1,8 @@
 import Layout from "../components/templates/Layout"
 
-const Trainings = () => {
+const Workout = () => {
   return (
-    <Layout
-      title=""
-      className="min-h-screen bg-[url('/wXBK9JrM0iU-unsplash.webp')] bg-cover bg-center"
-    >
+    <Layout title="Workout" bg="workout">
       <section className="grid grid-cols-autofit place-items-center">
         <div className="card max-w-96 glass">
           <div className="card-body">
@@ -21,4 +18,4 @@ const Trainings = () => {
   )
 }
 
-export default Trainings
+export default Workout
